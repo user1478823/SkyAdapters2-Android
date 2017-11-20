@@ -2,6 +2,7 @@ package com.example.skyadapters;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 
@@ -12,22 +13,23 @@ import android.support.v7.app.AlertDialog;
 public class AlertAdapter {
 
     private Activity a;
+    private SharedPreferences sharedPreferences;
 
     public AlertAdapter(Activity a) {
         this.a = a;
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(a);
     }
 
-    public void buildRadioDialog(final String sharedPref, final CharSequence[] radioButtonsText) {
+    public void buildRadioDialog(final String sharedPref, final String alertTitle, final CharSequence[] radioButtonsText) {
 
         final String savedTheme = PreferenceManager.getDefaultSharedPreferences(a).getString(sharedPref,
                 radioButtonsText[0].toString());
 
-        final int[] selectedRadioBtn = {PreferenceManager.getDefaultSharedPreferences(a).getInt("RadioBtnPosition",
-                0)}; //will give you null exception if you put null
+        final int[] selectedRadioBtn = {sharedPreferences.getInt("RadioBtnPosition", 0)}; //will give you null exception if you put null
 
         final String[] themeToSave = {radioButtonsText[selectedRadioBtn[0]].toString()};
         final AlertDialog.Builder builder = new AlertDialog.Builder(a);
-        builder .setTitle("Choose theme")
+        builder .setTitle(alertTitle)
                 .setSingleChoiceItems(radioButtonsText, selectedRadioBtn[0],
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -40,15 +42,9 @@ public class AlertAdapter {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         if (!themeToSave[0].contains(savedTheme)){
-                            PreferenceManager.getDefaultSharedPreferences(a)
-                                    .edit()
-                                    .putString(sharedPref, themeToSave[0])
-                                    .apply();
-                            PreferenceManager.getDefaultSharedPreferences(a)
-                                    .edit()
-                                    .putInt("RadioBtnPosition", selectedRadioBtn[0])
-                                    .apply();
-                            
+                            sharedPreferences.edit().putString(sharedPref, themeToSave[0]).apply();
+                            sharedPreferences.edit().putInt("RadioBtnPosition", selectedRadioBtn[0]).apply();
+
                             a.setResult(1);
                         }
                     }
@@ -61,6 +57,10 @@ public class AlertAdapter {
 
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    public String getResult(String sharedPref) {
+        return sharedPreferences.getString(sharedPref, "Error");
     }
 
 }
