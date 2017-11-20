@@ -46,15 +46,13 @@ public class ToolbarAdapter {
                                                              int toolbarID,
                                                              String title,
                                                              int drawerLayoutID,
-                                                             @StringRes int open,
-                                                             @StringRes int closed,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
         new RvAdapter(rvID, rvList, customLayoutID, txtID, a, onItemClickListener);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(drawerLayoutID);
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
-                open, closed);
+                R.string.drawer_open, R.string.drawer_closed);
         drawerLayout.addDrawerListener(toggleBtn);
 
         Toolbar toolbar = (Toolbar) a.findViewById(toolbarID);
