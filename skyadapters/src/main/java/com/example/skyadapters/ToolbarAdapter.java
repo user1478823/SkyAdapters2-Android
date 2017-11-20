@@ -26,10 +26,9 @@ public class ToolbarAdapter {
         this.a = a;
     }
 
-    public void buildToolbar(int id, String title) {
+    public void buildToolbar(int id) {
         Toolbar toolbar = (Toolbar) a.findViewById(id);
         a.setSupportActionBar(toolbar);
-        a.getSupportActionBar().setTitle(title);
         a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
