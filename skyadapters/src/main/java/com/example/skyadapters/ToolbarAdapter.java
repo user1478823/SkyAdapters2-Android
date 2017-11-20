@@ -26,7 +26,7 @@ public class ToolbarAdapter {
         this.a = a;
     }
 
-    public void setupToolbar(int id, String title) {
+    public void buildToolbar(int id, String title) {
         Toolbar toolbar = (Toolbar) a.findViewById(id);
         a.setSupportActionBar(toolbar);
         a.getSupportActionBar().setTitle(title);
@@ -39,12 +39,11 @@ public class ToolbarAdapter {
         });
     }
 
-    public ActionBarDrawerToggle setupToolbarForMainActivity(int rvID,
+    public ActionBarDrawerToggle buildToolbarForMainActivity(int rvID,
                                                              List<String> rvList,
                                                              int customLayoutID,
                                                              int txtID,
                                                              int toolbarID,
-                                                             String title,
                                                              int drawerLayoutID,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
@@ -58,11 +57,15 @@ public class ToolbarAdapter {
         Toolbar toolbar = (Toolbar) a.findViewById(toolbarID);
         a.setSupportActionBar(toolbar);
         a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        a.getSupportActionBar().setTitle(title);
+
 
         toggleBtn.syncState();
 
         return toggleBtn;
+    }
+
+    public void setToolbarTitle(String title){
+        a.getSupportActionBar().setTitle(title);
     }
 }
 
