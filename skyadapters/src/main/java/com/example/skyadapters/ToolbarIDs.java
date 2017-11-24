@@ -6,16 +6,28 @@ package com.example.skyadapters;
 
 public class ToolbarIDs {
 
+    private Integer toolbarID;
+    private Integer drawerLayoutID;
     private Integer rvId;
     private Integer customLayoutId;
     private Integer itemImageId;
     private Integer itemTitleId;
 
-    public ToolbarIDs(Integer rvId, Integer customLayoutId, Integer itemImageId, Integer itemTitleId) {
+    public ToolbarIDs(Integer toolbarID, Integer drawerLayoutID, Integer rvId, Integer customLayoutId, Integer itemImageId, Integer itemTitleId) {
+        this.toolbarID = toolbarID;
+        this.drawerLayoutID = drawerLayoutID;
         this.rvId = rvId;
         this.customLayoutId = customLayoutId;
         this.itemImageId = itemImageId;
         this.itemTitleId = itemTitleId;
+    }
+
+    public Integer getToolbarID() {
+        return toolbarID;
+    }
+
+    public Integer getDrawerLayoutID() {
+        return drawerLayoutID;
     }
 
     public Integer getRvId() {

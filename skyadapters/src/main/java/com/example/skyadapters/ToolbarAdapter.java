@@ -34,19 +34,17 @@ public class ToolbarAdapter {
 
     public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
                                                              TypedArray imgList,
-                                                             int toolbarID,
-                                                             int drawerLayoutID,
                                                              ToolbarIDs toolbarIDs,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
         new RvAdapter(rvList, imgList, a, toolbarIDs, onItemClickListener);
 
-        DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(drawerLayoutID);
+        DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(toolbarIDs.getDrawerLayoutID());
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
                 R.string.drawer_open, R.string.drawer_closed);
         drawerLayout.addDrawerListener(toggleBtn);
 
-        Toolbar toolbar = (Toolbar) a.findViewById(toolbarID);
+        Toolbar toolbar = (Toolbar) a.findViewById(toolbarIDs.getToolbarID());
         a.setSupportActionBar(toolbar);
         a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
