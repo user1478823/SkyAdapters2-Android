@@ -1,17 +1,10 @@
 package com.example.skyadapters;
 
-import android.app.Activity;
-import android.support.annotation.StringRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -38,15 +31,14 @@ public class ToolbarAdapter {
         });
     }
 
-    public ActionBarDrawerToggle buildToolbarForMainActivity(int rvID,
-                                                             List<String> rvList,
-                                                             int customLayoutID,
-                                                             int txtID,
+    public ActionBarDrawerToggle buildToolbarForMainActivity(List<String> rvList,
+                                                             List<Integer> imgList,
                                                              int toolbarID,
                                                              int drawerLayoutID,
+                                                             ToolbarIDs toolbarIDs,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
-        new RvAdapter(rvID, rvList, customLayoutID, txtID, a, onItemClickListener);
+        new RvAdapter(rvList, imgList, a, toolbarIDs, onItemClickListener);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(drawerLayoutID);
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
