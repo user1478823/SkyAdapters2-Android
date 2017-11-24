@@ -1,5 +1,6 @@
 package com.example.skyadapters;
 
+import android.content.res.TypedArray;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +33,7 @@ public class ToolbarAdapter {
     }
 
     public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
-                                                             Integer[] imgList,
+                                                             TypedArray imgList,
                                                              int toolbarID,
                                                              int drawerLayoutID,
                                                              ToolbarIDs toolbarIDs,
