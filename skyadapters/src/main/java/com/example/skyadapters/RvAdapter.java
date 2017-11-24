@@ -15,13 +15,13 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     private Activity a;
     private String[] list;
-    private List<Integer> imgList;
+    private Integer[] imgList;
     private int customLayoutID;
     private Integer txtID;
     private Integer imgID;
     private OnItemClickListener onItemClickListener;
 
-    public RvAdapter(String[] rvList, List<Integer> imgList, final Activity a, ToolbarIDs toolbarIDs, OnItemClickListener onItemClickListener) {
+    public RvAdapter(String[] rvList, Integer[] imgList, final Activity a, ToolbarIDs toolbarIDs, OnItemClickListener onItemClickListener) {
         this.list = rvList;
         this.imgList = imgList;
         this.a = a;
@@ -68,7 +68,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         String item = list[position];
         holder.txt.setText(item);
         if (holder.img != null){
-            holder.img.setImageResource(imgList.get(position));
+            holder.img.setImageResource(imgList[position]);
         }
         holder.bind(onItemClickListener);
     }

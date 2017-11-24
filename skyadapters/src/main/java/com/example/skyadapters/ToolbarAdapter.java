@@ -32,7 +32,7 @@ public class ToolbarAdapter {
     }
 
     public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
-                                                             List<Integer> imgList,
+                                                             Integer[] imgList,
                                                              int toolbarID,
                                                              int drawerLayoutID,
                                                              ToolbarIDs toolbarIDs,
