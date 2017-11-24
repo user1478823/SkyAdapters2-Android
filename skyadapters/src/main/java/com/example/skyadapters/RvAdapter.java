@@ -14,15 +14,15 @@ import java.util.List;
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     private Activity a;
-    private List<String> list;
+    private String[] list;
     private List<Integer> imgList;
     private int customLayoutID;
     private Integer txtID;
     private Integer imgID;
     private OnItemClickListener onItemClickListener;
 
-    public RvAdapter(List<String> list, List<Integer> imgList, final Activity a, ToolbarIDs toolbarIDs, OnItemClickListener onItemClickListener) {
-        this.list = list;
+    public RvAdapter(String[] rvList, List<Integer> imgList, final Activity a, ToolbarIDs toolbarIDs, OnItemClickListener onItemClickListener) {
+        this.list = rvList;
         this.imgList = imgList;
         this.a = a;
         this.customLayoutID = toolbarIDs.getCustomLayoutId();
@@ -65,7 +65,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        String item = list.get(position);
+        String item = list[position];
         holder.txt.setText(item);
         if (holder.img != null){
             holder.img.setImageResource(imgList.get(position));
@@ -75,7 +75,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list.length;
     }
 
 

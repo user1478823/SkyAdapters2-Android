@@ -31,7 +31,7 @@ public class ToolbarAdapter {
         });
     }
 
-    public ActionBarDrawerToggle buildToolbarForMainActivity(List<String> rvList,
+    public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
                                                              List<Integer> imgList,
                                                              int toolbarID,
                                                              int drawerLayoutID,
