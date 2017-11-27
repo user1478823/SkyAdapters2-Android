@@ -20,7 +20,8 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     private int customLayoutID;
     private OnItemClickListener onItemClickListener;
 
-    public RvAdapter(String[] rvList, TypedArray imgList, final Activity a, int customLayoutID, OnItemClickListener onItemClickListener) {
+    public RvAdapter(String[] rvList, TypedArray imgList, final Activity a, int customLayoutID,
+                     RecyclerView.LayoutManager layoutManager, OnItemClickListener onItemClickListener) {
         this.list = rvList;
         this.imgList = imgList;
         this.a = a;
@@ -28,8 +29,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         this.onItemClickListener = onItemClickListener;
 
         RecyclerView rv = (RecyclerView) a.findViewById(R.id.sky_rv_drawer);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(a);
-        rv.setLayoutManager(linearLayoutManager);
+        rv.setLayoutManager(layoutManager);
         rv.setAdapter(this);
     }
 

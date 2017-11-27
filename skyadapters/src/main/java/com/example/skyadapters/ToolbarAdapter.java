@@ -4,6 +4,7 @@ import android.content.res.TypedArray;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -35,9 +36,10 @@ public class ToolbarAdapter {
     public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
                                                              TypedArray imgList,
                                                              int customLayoutID,
+                                                             RecyclerView.LayoutManager layoutManager,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
-        new RvAdapter(rvList, imgList, a, customLayoutID, onItemClickListener);
+        new RvAdapter(rvList, imgList, a, customLayoutID, layoutManager, onItemClickListener);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
