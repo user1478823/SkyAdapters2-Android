@@ -23,7 +23,7 @@ public class ToolbarAdapter {
         this.a = a;
     }
 
-    public Toolbar buildToolbar(int id) {
+    public ToolbarAdapter buildToolbar(int id) {
         toolbar = (Toolbar) a.findViewById(id);
         a.setSupportActionBar(toolbar);
         a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -33,7 +33,7 @@ public class ToolbarAdapter {
                 a.finish();
             }
         });
-        return toolbar;
+        return this;
     }
 
     public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
@@ -60,14 +60,14 @@ public class ToolbarAdapter {
         return toggleBtn;
     }
 
-    public Toolbar setToolbarTitle(String title){
+    public ToolbarAdapter setToolbarTitle(String title){
         toolbar.setTitle(title);
-        return toolbar;
+        return this;
     }
 
-    public Toolbar setToolbarColor(int color) {
+    public ToolbarAdapter setToolbarColor(int color) {
         toolbar.setBackgroundColor(color);
-        return toolbar;
+        return this;
     }
 }
 
