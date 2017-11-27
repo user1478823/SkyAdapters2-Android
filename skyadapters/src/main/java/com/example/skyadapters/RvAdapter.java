@@ -2,6 +2,7 @@ package com.example.skyadapters;
 
 import android.app.Activity;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,13 +21,20 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     private int customLayoutID;
     private OnItemClickListener onItemClickListener;
 
+    private int color = Color.WHITE;
+
     public RvAdapter(String[] rvList, TypedArray imgList, final Activity a, int customLayoutID,
-                     RecyclerView.LayoutManager layoutManager, OnItemClickListener onItemClickListener) {
+                     RecyclerView.LayoutManager layoutManager, Integer drawerItemsColor,
+                     OnItemClickListener onItemClickListener) {
         this.list = rvList;
         this.imgList = imgList;
         this.a = a;
         this.customLayoutID = customLayoutID;
         this.onItemClickListener = onItemClickListener;
+
+        if (drawerItemsColor != null){
+            color = drawerItemsColor;
+        }
 
         RecyclerView rv = (RecyclerView) a.findViewById(R.id.sky_rv_drawer);
         rv.setLayoutManager(layoutManager);
@@ -39,21 +47,8 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
         ViewHolder(View itemView) {
             super(itemView);
-            //txt = (TextView) itemView.findViewById(txtID);
-            //LayoutInflater inflater = a.getLayoutInflater();
-            //View v = inflater.inflate(customLayoutID, null);
-            /*ViewGroup root = (ViewGroup) v;
-            for (int i = 0; i < root.getChildCount(); i++) {
-                View myView = root.getChildAt(i);
-                if (myView instanceof TextView) {
-                    txt = (TextView) myView;
-                }
-            }*/
             txt = (TextView) itemView.findViewById(R.id.sky_txt_drawer);
             img = (ImageView) itemView.findViewById(R.id.sky_img_drawer);
-            /*if (imgID != null){
-                img = (ImageView) itemView.findViewById(imgID);
-            }*/
         }
 
         public void bind(final OnItemClickListener listener) {
@@ -73,6 +68,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+        holder.itemView.setBackgroundColor(color);
         String item = list[position];
         holder.txt.setText(item);
         if (holder.img != null){
