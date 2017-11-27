@@ -37,10 +37,12 @@ public class ToolbarAdapter {
     public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
                                                              TypedArray imgList,
                                                              int customLayoutID,
+                                                             Integer drawerItemsColor,
                                                              RecyclerView.LayoutManager layoutManager,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
-        rvAdapter = new RvAdapter(rvList, imgList, a, customLayoutID, layoutManager, onItemClickListener);
+        rvAdapter = new RvAdapter(rvList, imgList, a, drawerItemsColor, layoutManager, customLayoutID,
+                                  onItemClickListener);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
@@ -59,10 +61,6 @@ public class ToolbarAdapter {
 
     public void setToolbarTitle(String title){
         a.getSupportActionBar().setTitle(title);
-    }
-
-    public void setDrawerItemsColor() {
-        rvAdapter.setDrawerItemsColor();
     }
 }
 
