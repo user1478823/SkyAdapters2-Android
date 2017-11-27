@@ -37,11 +37,10 @@ public class ToolbarAdapter {
     public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
                                                              TypedArray imgList,
                                                              int customLayoutID,
-                                                             Integer drawerItemsColor,
                                                              RecyclerView.LayoutManager layoutManager,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
-        rvAdapter = new RvAdapter(rvList, imgList, a, drawerItemsColor, layoutManager, customLayoutID,
+        rvAdapter = new RvAdapter(rvList, imgList, a, customLayoutID, layoutManager,
                                   onItemClickListener);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);

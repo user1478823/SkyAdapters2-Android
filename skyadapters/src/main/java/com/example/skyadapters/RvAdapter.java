@@ -21,20 +21,15 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     private int customLayoutID;
     private OnItemClickListener onItemClickListener;
 
-    private int color = Color.WHITE;
 
     public RvAdapter(String[] rvList, TypedArray imgList, final Activity a, int customLayoutID,
-                     RecyclerView.LayoutManager layoutManager, Integer drawerItemsColor,
+                     RecyclerView.LayoutManager layoutManager,
                      OnItemClickListener onItemClickListener) {
         this.list = rvList;
         this.imgList = imgList;
         this.a = a;
         this.customLayoutID = customLayoutID;
         this.onItemClickListener = onItemClickListener;
-
-        if (drawerItemsColor != null){
-            color = drawerItemsColor;
-        }
 
         RecyclerView rv = (RecyclerView) a.findViewById(R.id.sky_rv_drawer);
         rv.setLayoutManager(layoutManager);
@@ -68,7 +63,6 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.itemView.setBackgroundColor(color);
         String item = list[position];
         holder.txt.setText(item);
         if (holder.img != null){
