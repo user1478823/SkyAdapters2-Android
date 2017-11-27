@@ -18,17 +18,13 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     private String[] list;
     private TypedArray imgList;
     private int customLayoutID;
-    private Integer txtID;
-    private Integer imgID;
     private OnItemClickListener onItemClickListener;
 
-    public RvAdapter(String[] rvList, TypedArray imgList, final Activity a, ToolbarIDs toolbarIDs, OnItemClickListener onItemClickListener) {
+    public RvAdapter(String[] rvList, TypedArray imgList, final Activity a, int customLayoutID, OnItemClickListener onItemClickListener) {
         this.list = rvList;
         this.imgList = imgList;
         this.a = a;
-        this.customLayoutID = toolbarIDs.getCustomLayoutId();
-        this.txtID = toolbarIDs.getItemTitleId();
-        this.imgID = toolbarIDs.getItemImageId();
+        this.customLayoutID = customLayoutID;
         this.onItemClickListener = onItemClickListener;
 
         RecyclerView rv = (RecyclerView) a.findViewById(R.id.sky_rv_drawer);

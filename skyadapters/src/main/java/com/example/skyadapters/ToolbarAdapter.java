@@ -34,10 +34,10 @@ public class ToolbarAdapter {
 
     public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
                                                              TypedArray imgList,
-                                                             ToolbarIDs toolbarIDs,
+                                                             int customLayoutID,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
-        new RvAdapter(rvList, imgList, a, toolbarIDs, onItemClickListener);
+        new RvAdapter(rvList, imgList, a, customLayoutID, onItemClickListener);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
