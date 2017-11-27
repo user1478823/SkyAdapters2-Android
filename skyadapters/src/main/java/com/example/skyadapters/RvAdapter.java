@@ -31,7 +31,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         this.imgID = toolbarIDs.getItemImageId();
         this.onItemClickListener = onItemClickListener;
 
-        RecyclerView rv = (RecyclerView) a.findViewById(toolbarIDs.getRvId());
+        RecyclerView rv = (RecyclerView) a.findViewById(R.id.sky_rv_drawer);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(a);
         rv.setLayoutManager(linearLayoutManager);
         rv.setAdapter(this);

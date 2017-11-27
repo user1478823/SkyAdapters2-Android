@@ -39,12 +39,12 @@ public class ToolbarAdapter {
 
         new RvAdapter(rvList, imgList, a, toolbarIDs, onItemClickListener);
 
-        DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(toolbarIDs.getDrawerLayoutID());
+        DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
                 R.string.drawer_open, R.string.drawer_closed);
         drawerLayout.addDrawerListener(toggleBtn);
 
-        Toolbar toolbar = (Toolbar) a.findViewById(toolbarIDs.getToolbarID());
+        Toolbar toolbar = (Toolbar) a.findViewById(R.id.sky_toolbar);
         a.setSupportActionBar(toolbar);
         a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
