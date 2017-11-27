@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="sky_txt_drawer" type="id">sky_txt_drawer</item>
+    <item name="sky_img_drawer" type="id">sky_img_drawer</item>
+</resources>

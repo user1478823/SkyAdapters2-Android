@@ -44,18 +44,20 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         ViewHolder(View itemView) {
             super(itemView);
             //txt = (TextView) itemView.findViewById(txtID);
-            LayoutInflater inflater = a.getLayoutInflater();
-            View v = inflater.inflate(customLayoutID, null);
-            ViewGroup root = (ViewGroup) v;
+            //LayoutInflater inflater = a.getLayoutInflater();
+            //View v = inflater.inflate(customLayoutID, null);
+            /*ViewGroup root = (ViewGroup) v;
             for (int i = 0; i < root.getChildCount(); i++) {
                 View myView = root.getChildAt(i);
                 if (myView instanceof TextView) {
                     txt = (TextView) myView;
                 }
-            }
-            if (imgID != null){
+            }*/
+            txt = (TextView) itemView.findViewById(R.id.sky_txt_drawer);
+            img = (ImageView) itemView.findViewById(R.id.sky_img_drawer);
+            /*if (imgID != null){
                 img = (ImageView) itemView.findViewById(imgID);
-            }
+            }*/
         }
 
         public void bind(final OnItemClickListener listener) {
