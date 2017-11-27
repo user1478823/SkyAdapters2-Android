@@ -30,7 +30,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         this.txtID = toolbarIDs.getItemTitleId();
         this.imgID = toolbarIDs.getItemImageId();
         this.onItemClickListener = onItemClickListener;
-
+        
         RecyclerView rv = (RecyclerView) a.findViewById(toolbarIDs.getRvId());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(a);
         rv.setLayoutManager(linearLayoutManager);
@@ -43,7 +43,14 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
         ViewHolder(View itemView) {
             super(itemView);
-            txt = (TextView) itemView.findViewById(txtID);
+            //txt = (TextView) itemView.findViewById(txtID);
+            ViewGroup root = (ViewGroup) a.findViewById(customLayoutID);
+            for (int i = 0; i < root.getChildCount(); i++) {
+                View v = root.getChildAt(i);
+                if (v instanceof TextView) {
+                    txt = (TextView) v;
+                }
+            }
             if (imgID != null){
                 img = (ImageView) itemView.findViewById(imgID);
             }
