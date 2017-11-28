@@ -4,6 +4,7 @@ package com.example.skyadapters;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -37,11 +38,14 @@ public class ToolbarAdapter {
     }
 
     public ActionBarDrawerToggle buildToolbarForMainActivity(Class[] activitiesToLaunch,
-                                                             DrawerMenu drawerMenu,
+                                                             int menuID,
                                                              int customLayoutID,
                                                              RecyclerView.LayoutManager layoutManager){
 
-        rvAdapter = new RvAdapter(a, drawerMenu.getMenu(), activitiesToLaunch, customLayoutID, layoutManager);
+        Menu menu = new PopupMenu(a, null).getMenu();
+        a.getMenuInflater().inflate(menuID, menu);
+
+        rvAdapter = new RvAdapter(a, menu, activitiesToLaunch, customLayoutID, layoutManager);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
