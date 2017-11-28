@@ -17,7 +17,7 @@ import java.util.List;
 public class ToolbarAdapter {
 
     private AppCompatActivity a;
-    RvAdapter rvAdapter;
+    private RvAdapter rvAdapter;
     private Toolbar toolbar;
 
     public ToolbarAdapter(AppCompatActivity a) {
@@ -37,13 +37,12 @@ public class ToolbarAdapter {
         return this;
     }
 
-    public ActionBarDrawerToggle buildToolbarForMainActivity(Menu menu, String[] rvList,
-                                                             TypedArray imgList,
+    public ActionBarDrawerToggle buildToolbarForMainActivity(Menu menu,
                                                              int customLayoutID,
                                                              RecyclerView.LayoutManager layoutManager,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
-        rvAdapter = new RvAdapter(menu, rvList, imgList, a, customLayoutID, layoutManager,
+        rvAdapter = new RvAdapter(menu, a, customLayoutID, layoutManager,
                                   onItemClickListener);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);

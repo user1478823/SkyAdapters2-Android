@@ -1,9 +1,6 @@
 package com.example.skyadapters;
 
 import android.app.Activity;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,25 +10,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
-
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     private Activity a;
-    private String[] list;
-    private TypedArray imgList;
     private int customLayoutID;
     private OnItemClickListener onItemClickListener;
 
     private Menu menu;
 
 
-    public RvAdapter(Menu menu, String[] rvList, TypedArray imgList, final Activity a, int customLayoutID,
+    public RvAdapter(Menu menu, final Activity a, int customLayoutID,
                      RecyclerView.LayoutManager layoutManager,
                      OnItemClickListener onItemClickListener) {
         this.menu = menu;
-        this.list = rvList;
-        this.imgList = imgList;
         this.a = a;
         this.customLayoutID = customLayoutID;
         this.onItemClickListener = onItemClickListener;
@@ -50,15 +41,6 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
             txt = (TextView) itemView.findViewById(R.id.sky_txt_drawer);
             img = (ImageView) itemView.findViewById(R.id.sky_img_drawer);
         }
-
-        public void bind(final OnItemClickListener listener) {
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(getLayoutPosition());
-                }
-            });
-        }
     }
 
     @Override
@@ -68,26 +50,25 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        String item = list[position];
-        /*holder.txt.setText(item);
-        if (holder.img != null){
-            holder.img.setImageResource(imgList.getResourceId(position, 0));
-        }*/
-
         final MenuItem menuItem = menu.getItem(position);
         holder.txt.setText(menuItem.getTitle());
         if (holder.img != null) holder.img.setImageDrawable(menuItem.getIcon());
 
-        holder.bind(onItemClickListener);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickListener.onItemClick(menuItem);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return list.length;
+        return menu.size();
     }
 
 
     public interface OnItemClickListener {
-        void onItemClick(int position);
+        void onItemClick(MenuItem position);
     }
 }
