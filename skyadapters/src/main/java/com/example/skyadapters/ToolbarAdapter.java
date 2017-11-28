@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 
 import java.util.List;
@@ -36,13 +37,13 @@ public class ToolbarAdapter {
         return this;
     }
 
-    public ActionBarDrawerToggle buildToolbarForMainActivity(String[] rvList,
+    public ActionBarDrawerToggle buildToolbarForMainActivity(Menu menu, String[] rvList,
                                                              TypedArray imgList,
                                                              int customLayoutID,
                                                              RecyclerView.LayoutManager layoutManager,
                                                              RvAdapter.OnItemClickListener onItemClickListener){
 
-        rvAdapter = new RvAdapter(rvList, imgList, a, customLayoutID, layoutManager,
+        rvAdapter = new RvAdapter(menu, rvList, imgList, a, customLayoutID, layoutManager,
                                   onItemClickListener);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);

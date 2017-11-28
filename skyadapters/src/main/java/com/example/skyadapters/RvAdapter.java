@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,10 +23,13 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     private int customLayoutID;
     private OnItemClickListener onItemClickListener;
 
+    private Menu menu;
 
-    public RvAdapter(String[] rvList, TypedArray imgList, final Activity a, int customLayoutID,
+
+    public RvAdapter(Menu menu, String[] rvList, TypedArray imgList, final Activity a, int customLayoutID,
                      RecyclerView.LayoutManager layoutManager,
                      OnItemClickListener onItemClickListener) {
+        this.menu = menu;
         this.list = rvList;
         this.imgList = imgList;
         this.a = a;
@@ -64,10 +69,15 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         String item = list[position];
-        holder.txt.setText(item);
+        /*holder.txt.setText(item);
         if (holder.img != null){
             holder.img.setImageResource(imgList.getResourceId(position, 0));
-        }
+        }*/
+
+        final MenuItem menuItem = menu.getItem(position);
+        holder.txt.setText(menuItem.getTitle());
+        if (holder.img != null) holder.img.setImageDrawable(menuItem.getIcon());
+
         holder.bind(onItemClickListener);
     }
 
