@@ -37,11 +37,11 @@ public class ToolbarAdapter {
     }
 
     public ActionBarDrawerToggle buildToolbarForMainActivity(Class[] activitiesToLaunch,
-                                                             Menu menu,
+                                                             DrawerMenu drawerMenu,
                                                              int customLayoutID,
                                                              RecyclerView.LayoutManager layoutManager){
 
-        rvAdapter = new RvAdapter(a, menu, activitiesToLaunch, customLayoutID, layoutManager);
+        rvAdapter = new RvAdapter(a, drawerMenu.getMenu(), activitiesToLaunch, customLayoutID, layoutManager);
 
         DrawerLayout drawerLayout = (DrawerLayout) a.findViewById(R.id.sky_drawer_layout);
         ActionBarDrawerToggle toggleBtn = new ActionBarDrawerToggle(a, drawerLayout,
