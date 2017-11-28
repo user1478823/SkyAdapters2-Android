@@ -16,16 +16,18 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     private Activity a;
     private int customLayoutID;
     private Class[] activities;
+    private int color;
 
     private Menu menu;
 
 
     public RvAdapter(final Activity a, Menu menu, Class[] activities, int customLayoutID,
-                     RecyclerView.LayoutManager layoutManager) {
-        this.menu = menu;
-        this.a = a;
+                     RecyclerView.LayoutManager layoutManager, int color) {
+        this.a              = a;
+        this.menu           = menu;
+        this.activities     = activities;
         this.customLayoutID = customLayoutID;
-        this.activities = activities;
+        this.color          = color;
 
         RecyclerView rv = (RecyclerView) a.findViewById(R.id.sky_rv_drawer);
         rv.setLayoutManager(layoutManager);
@@ -53,6 +55,8 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         final MenuItem menuItem = menu.getItem(position);
         holder.txt.setText(menuItem.getTitle());
         if (holder.img != null) holder.img.setImageDrawable(menuItem.getIcon());
+
+        holder.itemView.setBackgroundColor(color);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
