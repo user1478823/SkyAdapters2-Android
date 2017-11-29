@@ -53,6 +53,7 @@ public class AlertAdapter {
             }
         }
         final int[] selectedRadioBtn = {selectedInt};
+        
 
         //final int[] selectedRadioBtn = {sharedPreferences.getInt("RadioBtnPosition", 0)}; //will give you null exception if you put null
 
